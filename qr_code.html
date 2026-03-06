@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>QR Code – Star Poll</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #080c14;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Georgia', serif;
+    color: white;
+  }
+  .card {
+    background: white;
+    border-radius: 24px;
+    padding: 40px 48px;
+    text-align: center;
+    box-shadow: 0 0 80px rgba(79,142,247,0.3);
+    max-width: 420px;
+    width: 90%;
+  }
+  .card h2 {
+    color: #1e293b;
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+  .card p {
+    color: #64748b;
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  #qrcode { display: flex; justify-content: center; margin-bottom: 20px; }
+  #qrcode img, #qrcode canvas { border-radius: 8px; }
+  .url-box {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #475569;
+    word-break: break-all;
+    font-family: monospace;
+    margin-bottom: 16px;
+  }
+  .url-box a { color: #3b82f6; text-decoration: none; }
+  .instructions {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+  .step { margin: 4px 0; }
+
+  /* IMPORTANT: Edit the URL below to your Netlify URL after uploading */
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>🔭 Observational Astronomy</h2>
+  <p>Scan to access course materials &amp; polls</p>
+  <div id="qrcode"></div>
+  <div class="url-box">
+    <a id="poll-link" href="#" target="_blank">— paste your Netlify URL below —</a>
+  </div>
+  <div class="instructions">
+    <div class="step">📱 Open your phone camera</div>
+    <div class="step">Point at the QR code</div>
+    <div class="step">Tap the link that appears</div>
+  </div>
+</div>
+
+<script>
+  // ✏️ REPLACE THIS URL with your Netlify URL after uploading star_poll.html
+  const POLL_URL = 'https://aghakhanloo.github.io/observational-astronomy/';
+
+  document.getElementById('poll-link').href = POLL_URL;
+  document.getElementById('poll-link').textContent = POLL_URL;
+
+  new QRCode(document.getElementById('qrcode'), {
+    text: POLL_URL,
+    width: 260,
+    height: 260,
+    colorDark: '#000000',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+</script>
+</body>
+</html>
